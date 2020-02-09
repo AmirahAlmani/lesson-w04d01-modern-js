@@ -135,6 +135,14 @@ Your solution:
 
 ```js
 
+const addFive =(num)=> 5+num;
+
+
+const divide =(num1.num2) => num1/num2;
+
+
+const whoIsTheBestStudent=(studentName = 'Haya')=>`${studentName}`;
+
 ```
 
 ##### Create a function called `fullName`
@@ -151,6 +159,8 @@ Your solution:
 
 ```js
 
+const fullName =(first , last) => first+' '+last;
+
 ```
 
 ##### Turn `sayHello` into an arrow function
@@ -166,6 +176,8 @@ sayHello();
 Your solution:
 
 ```js
+
+const sayHello =(name='World')=>`Hello${name}`;
 
 ```
 
@@ -224,6 +236,9 @@ instructors.forEach(function(item){
 1. Say Hi
     ```js
     const friends = ["Abdulhamid", "Amirah", "Roba"];
+    friends.forEach(function(element) {
+  console.log('Hi '+element);
+});
 
     // For each friend in friends, print "Hi friendName!"
     // Write your solution here
@@ -242,6 +257,13 @@ instructors.forEach(function(item){
     // These crazy numbers now are strings 😯 😯  !!  
     const stringNumbers = ["103440", "3799.2663", "3.14159265359", "859494", "59439"];
     let totalNumbersUnder4000 = 0;
+       var result=stringNumbers.map(Number);
+    result.forEach(function(element){
+      if(element <=4000){
+        totalNumbersUnder4000+=element;
+        console.log(totalNumbersUnder4000);
+      }
+    })
 
     // Convert numbers from strings to numbers and 
     // sum all numbers under 4000 and store them 
@@ -272,21 +294,31 @@ The `map()` method creates a new array with the results of calling a provided fu
     let times100 = [];
 
     // Write your solution here
+    const map1 = nums.map(x => x * 100);
+    console.log(map1);
+
     ```
 2. Capitalize
     Capitalize all the strings in the IA's array and store them in the array capitalizedIA.
 
     ```js
-    const iAS = ['sager', 'hisham'];
+     const iAS = ['sager', 'hisham'];
     let capitalizedIAs = [];
-
     // Write your solution here
+    capitalizedIAs= iAS.map(function(elements){
+      return elements.toUpperCase();
+    })
+
     ```
 3. Abbreviations
     ```js
     const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
     let dayAbbreviations = [];
+        dayAbbreviations=days.map(function(element){
+    
+      return element.substring(0, 3);
+    })
 
     // Find the abbreviation of all days and add them to dayAbbreviations Array
     // Write your solution here
@@ -294,7 +326,9 @@ The `map()` method creates a new array with the results of calling a provided fu
 4. century20
     ```js
     const years = [1989, 2015, 2000, 1999, 2013, 1973, 2012];
-    let century20 =  []; 
+    let century20 =  [];
+    century20 = years.filter( year => year <= 2000 );
+console.log(century20); 
 
     // century20 should be: [1989, 2000, 1999, 1973]
     // Write your solution here
@@ -315,8 +349,13 @@ The `filter()` method creates a new array with all elements that pass the test i
 1. Only get the numbers that are divisible by 3
     ```js
     const nums = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-    // Write your solution here
+            let result = nums.filter(val => {
+  return val % 3 === 0;
+    });
+console.log(result);
     console.log(result);
+    // Write your solution here
+
     ```
 2. Create an array of names (maybe use 3 of your friends)
 
@@ -328,12 +367,21 @@ The `filter()` method creates a new array with all elements that pass the test i
     ```js
     const names = ['Bader', 'Ali', 'Afnan'];
     // Write your solution here
+    let result = names1.filter(val=>{
+return val.includes('a');
+});
+
+
+// Write your solution here
+console.log(result);
     console.log(result);
+
     ```
 3. century20
     ```js
     const years = [1989, 2015, 2000, 1999, 2013, 1973, 2012];
     let century20 = []; 
+    century20 =years.filter(function(element){return element<=2000;})
 
     // century20 should be: [1989, 2000, 1999, 1973]
     // Write your solution here
@@ -355,17 +403,26 @@ The `reduce()` method executes a reducer function (that you provide) on each ele
 1. Sum
     ```js
     const nums = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-    let sum;
-
+    let sum = nums.reduce((acc, val) => {
+  return acc + val;
+  });
+      console.log(sum);
     // Write your solution here
 
-    console.log(sum);
+
+    
+
+
+
     ```
 2. Crazy Numbers
     ```js
     // Thats an array with crazy numbers we cant read 😯
     const nums = [103440, 3799.2663, 3.14159265359, 859494, 59439];
-    let total = 0;
+    let total = nums.reduce((acc, val) => {
+  return acc + val;
+});
+
 
     // Sum all the numbers in nums and save the result in total
     // Write your solution here
@@ -375,6 +432,13 @@ The `reduce()` method executes a reducer function (that you provide) on each ele
     // These crazy numbers now are strings 😯 😯  !!  
     const stringNumbers = ["103440", "3799.2663", "3.14159265359", "859494", "59439"];
     let totalNumbersUnder4000 = 0;
+        var result=stringNumbers.map(Number);
+    result=result.filter(function(element){
+      return element<=4000;
+    })
+    totalNumbersUnder4000=result.reduce(function(accumlator,currentNumber){
+        return accumlator + currentNumber;
+    })
 
     // Convert numbers from strings to numbers and 
     // sum all numbers under 4000 and store them 
